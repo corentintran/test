@@ -10,13 +10,13 @@ const Navigation = () => {
           <a href="/">Home</a>
         </li>
         <li>
-          <a href="/">Volcano list</a>
+          <a href="VolcanoList">Volcano list</a>
         </li>
         <li>
-          <a href="/">Register</a>
+          <a href="Register">Register</a>
         </li>
         <li>
-          <a href="/">Login</a>
+          <a href="Login">Login</a>
         </li>
       </ul>
     </div>
