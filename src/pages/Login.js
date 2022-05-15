@@ -1,11 +1,12 @@
-import Navigation from "../navigation.js";
+import React from "react";
+import Navigation from "../components/Navigation";
 import "./Login.css";
 
 export default function Login() {
   return (
-    <div>
-      <h1> login </h1>
+    <div className="App">
       <Navigation />
+      <h1> login </h1>
     </div>
   );
 }

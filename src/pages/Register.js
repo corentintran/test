@@ -1,4 +1,5 @@
-import Navigation from "../navigation.js";
+import React from "react";
+import Navigation from "../components/Navigation.js";
 import "./Register.css";
 
 export default function Register() {
