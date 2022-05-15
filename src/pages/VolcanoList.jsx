@@ -8,7 +8,7 @@ import "ag-grid-community/dist/styles/ag-theme-balham.css";
 
 import "../styles.css";
 
-import Volcano from "./Volcano";
+//import Volcano from "./Volcano";
 
 export default function VolcanoList() {
   const [rowData, setRowData] = useState([]);
