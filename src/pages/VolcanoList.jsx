@@ -7,6 +7,8 @@ import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
 
 import "../styles.css";
+import SearchBar from "../components/SearchBar";
+import { useVolcano } from "../api";
 
 //import Volcano from "./Volcano";
 
@@ -41,6 +43,7 @@ export default function VolcanoList() {
 
   return (
     <div className="container">
+      <SearchBar onSubmit={setRowData} />
       <div
         className="ag-theme-balham"
         style={{
