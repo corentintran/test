@@ -1,21 +1,21 @@
 import { useEffect, useState } from "react";
 
-const API_KEY = "34362870b15d4757aa533131220504";
+//const API_KEY = "34362870b15d4757aa533131220504";
 
-export function useVolcano(query) {
+export function useVolcano(country) {
   const [loading, setLoading] = useState(true);
   const [headlines, setHeadlines] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    getVolcanoByQuery(query)
+    getVolcanoByCountry(country)
       .then((volcano) => {
         setHeadlines(volcano);
         setLoading(false);
         setError(null);
       })
       .catch((err) => setError(err.message));
-  }, [query]);
+  }, [country]);
 
   return {
     loading,
@@ -24,10 +24,8 @@ export function useVolcano(query) {
   };
 }
 
-function getVolcanoByQuery(q) {
-  return fetch(
-    `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${q}`
-  )
+function getVolcanoByCountry(c) {
+  return fetch(`http://sefdb02.qut.edu.au:3001/volcanoes?country=${c}`)
     .then((res) => res.json())
     .then((res) => {
       console.log(res);
@@ -36,13 +34,11 @@ function getVolcanoByQuery(q) {
       }
       return res.forecast.forecastday[0].hour;
     })
-    .then((forecasts) =>
-      forecasts.map((forecast) => ({
-        time: forecast.time,
-        text: forecast.condition.text,
-        temp: forecast.temp_c,
-        wind: forecast.wind_kph,
-        icon: forecast.condition.icon
+    .then((volcanoes) =>
+      volcanoes.map((volcan) => ({
+        name: volcan.name,
+        region: volcan.region,
+        subregion: volcan.subregion
       }))
     );
 }

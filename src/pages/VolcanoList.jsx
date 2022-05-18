@@ -13,13 +13,18 @@ import { useVolcano } from "../api";
 //import Volcano from "./Volcano";
 
 export default function VolcanoList() {
+  const [country, setCountry] = useState("Japan");
+  const { loading, headlines, error } = useVolcano(query);
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
   const [rowData, setRowData] = useState([]);
-  const country = "Japan";
 
   useEffect(() => {
     fetch("http://sefdb02.qut.edu.au:3001/volcanoes?country=" + country)
       .then((res) => res.json())
-      .then((res) => setRowData(res))
+      .then((data) => setRowData(res))
       .then((data) =>
         data.map((rowData) => {
           return {
@@ -44,7 +49,8 @@ export default function VolcanoList() {
 
   return (
     <div className="container">
-      <SearchBar onSubmit={setRowData} />
+      <h1>Volanoes of {country}</h1>
+      <SearchBar onSubmit={setCountry} />
       <div
         className="ag-theme-balham"
         style={{
@@ -57,7 +63,7 @@ export default function VolcanoList() {
           rowData={rowData}
           pagination
           paginationPageSize={7}
-          onRowClicked={(row) => navigate(`/volcano?name=${row.data.title}`)}
+          onRowClicked={(row) => navigate(`/volcano?name=${row.data.name}`)}
         />
       </div>
     </div>
