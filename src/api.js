@@ -17,6 +17,26 @@ export function useVolcano(country) {
       .catch((err) => setError(err.message));
   }, [country]);
 
+  //old useEffect
+  /*
+  const [rowData, setRowData] = useState([]);
+  useEffect(() => {
+    fetch("http://sefdb02.qut.edu.au:3001/volcanoes?country=" + country)
+      .then((res) => res.json())
+      .then((data) => setRowData(res))
+      .then((data) =>
+        data.map((rowData) => {
+          return {
+            name: rowData.name,
+            region: rowData.region,
+            subregion: rowData.subregion
+          };
+        })
+      )
+      .then((volcans) => setRowData(volcans));
+  }, []);
+  */
+
   return {
     loading,
     headlines,
