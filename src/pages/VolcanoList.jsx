@@ -19,17 +19,17 @@ export default function VolcanoList() {
   useEffect(() => {
     fetch("http://sefdb02.qut.edu.au:3001/volcanoes?country=" + country)
       .then((res) => res.json())
-      .then((data) => data.works)
-      .then((works) =>
-        works.map((volcan) => {
+      .then((res) => setRowData(res))
+      .then((data) =>
+        data.map((rowData) => {
           return {
-            name: volcan.name,
-            region: volcan.region,
-            subregion: volcan.subregion
+            name: rowData.name,
+            region: rowData.region,
+            subregion: rowData.subregion
           };
         })
       )
-      .then((rowData) => setRowData(rowData));
+      .then((volcans) => setRowData(volcans));
   }, []);
 
   const navigate = useNavigate();
