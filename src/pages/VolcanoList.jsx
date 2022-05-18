@@ -23,7 +23,7 @@ export default function VolcanoList() {
       <h1>Volcanoes of {country}</h1>
       <SearchBar onSubmit={setCountry} />
 
-      <VolcanoGrid {...volcanoes} />
+      <VolcanoGrid volcanoes={volcanoes} />
       {error === null ? (
         volcanoes.map((volc) => <VolcanoGrid {...volc} />)
       ) : (

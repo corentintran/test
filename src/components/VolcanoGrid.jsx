@@ -11,6 +11,7 @@ export default function VolcanoGrid(props) {
   ];
 
   const navigate = useNavigate();
+  const volcanoes = props.volcanoes;
 
   return (
     <div
@@ -22,7 +23,7 @@ export default function VolcanoGrid(props) {
     >
       <AgGridReact
         columnDefs={columns}
-        rowData={props.volcanoes}
+        rowData={volcanoes}
         pagination
         paginationPageSize={7}
         onRowClicked={(row) => navigate(`/volcano?id=${row.data.id}`)}
