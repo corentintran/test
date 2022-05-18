@@ -10,6 +10,7 @@ import Home from "./pages/Home";
 import VolcanoList from "./pages/VolcanoList";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Volcano from "./pages/Volcano";
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
           <Route path="/VolcanoList" element={<VolcanoList />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/Register" element={<Register />} />
+          <Route path="/volcano" element={<Volcano />} />
         </Routes>
       </div>
     </BrowserRouter>

@@ -25,7 +25,7 @@ export default function VolcanoGrid(props) {
         rowData={props.volcanoes}
         pagination
         paginationPageSize={7}
-        onRowClicked={(row) => navigate(`/volcano?name=${row.data.name}`)}
+        onRowClicked={(row) => navigate(`/volcano?id=${row.data.id}`)}
       />
     </div>
   );
