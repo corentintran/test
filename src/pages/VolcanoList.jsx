@@ -14,9 +14,10 @@ import { useVolcano } from "../api";
 
 export default function VolcanoList() {
   const [rowData, setRowData] = useState([]);
+  const country = "Japan";
 
   useEffect(() => {
-    fetch("http://sefdb02.qut.edu.au:3001/volcanoes?country=Japan")
+    fetch("http://sefdb02.qut.edu.au:3001/volcanoes?country=" + country)
       .then((res) => res.json())
       .then((data) => data.works)
       .then((works) =>

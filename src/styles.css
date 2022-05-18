@@ -10,7 +10,7 @@
 .App-header {
   background-color: #282c34;
   background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/MSH82_st_helens_plume_from_harrys_ridge_05-19-82.jpg/500px-MSH82_st_helens_plume_from_harrys_ridge_05-19-82.jpg");
-  min-height: 100vh;
+  min-height: 90vh;
 }
 
 body {
