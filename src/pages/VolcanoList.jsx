@@ -1,19 +1,15 @@
 import React from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import "../styles.css";
 import SearchBar from "../components/SearchBar";
 import VolcanoGrid from "../components/VolcanoGrid";
-import { useVolcanoData } from "../api";
 
-//import Volcano from "./Volcano";
 
 export default function VolcanoList() {
   const [country, setCountry] = useState("Japan");
-  const { loading, volcanoes, error } = useVolcanoData(country);
-  //if (loading) {
-  //  return <p>Loading...</p>;
-  //}
+  const { volcanoes, error } = useVolcanoData(country);
+
 
   //const rowData = props.rowData;
   //setError(null);
@@ -31,4 +27,34 @@ export default function VolcanoList() {
       )}
     </div>
   );
+}
+
+
+function useVolcanoData(country) {
+  const [volcanoes, setVolcanoes] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetch(`http://sefdb02.qut.edu.au:3001/volcanoes?country=${country}`)
+      .then((res) => res.json())
+      .then((res) => setVolcanoes(res))
+      .then((data) =>
+        data.map((volc) => ({
+          id: volc.id,
+          name: volc.name,
+          region: volc.region,
+          subregion: volc.subregion
+        }))
+      )
+      .then((volc) => {
+        setVolcanoes(volc);
+        setError(null);
+      })
+      .catch((err) => setError(err.message));
+  }, [country]);
+
+  return {
+    volcanoes,
+    error
+  };
 }
