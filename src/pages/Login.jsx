@@ -15,6 +15,7 @@ const log = function (mail, psw) {
     .then((res) => res.json())
     .then((res) => localStorage.setItem("token", res.token));
 };
+
 export default function Login() {
   const [mail, setMail] = useState("");
   const [psw, setPsw] = useState("");

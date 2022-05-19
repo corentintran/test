@@ -5,11 +5,9 @@ import "../styles.css";
 import SearchBar from "../components/SearchBar";
 import VolcanoGrid from "../components/VolcanoGrid";
 
-
 export default function VolcanoList() {
   const [country, setCountry] = useState("Japan");
   const { volcanoes, error } = useVolcanoData(country);
-
 
   //const rowData = props.rowData;
   //setError(null);
@@ -28,7 +26,6 @@ export default function VolcanoList() {
     </div>
   );
 }
-
 
 function useVolcanoData(country) {
   const [volcanoes, setVolcanoes] = useState([]);
@@ -55,6 +52,27 @@ function useVolcanoData(country) {
 
   return {
     volcanoes,
+    error
+  };
+}
+
+function useCountryData() {
+  const [countries, setCountries] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetch(`http://sefdb02.qut.edu.au:3001/countries`)
+      .then((res) => res.json())
+      .then((res) => setCountries(res))
+      .then((country) => {
+        setCountries(country);
+        setError(null);
+      })
+      .catch((err) => setError(err.message));
+  });
+
+  return {
+    countries,
     error
   };
 }

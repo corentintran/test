@@ -7,17 +7,21 @@
   text-align: center;
 }
 
-.App-header {
+.Home {
   background-color: #282c34;
   background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/MSH82_st_helens_plume_from_harrys_ridge_05-19-82.jpg/500px-MSH82_st_helens_plume_from_harrys_ridge_05-19-82.jpg");
   min-height: 90vh;
+  max-width: 170vh;
+  text-align: center;
+}
+
+.container {
+  background-color: #fff;
 }
 
 body {
   background: #fff;
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #282c34;
-  background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/MSH82_st_helens_plume_from_harrys_ridge_05-19-82.jpg/500px-MSH82_st_helens_plume_from_harrys_ridge_05-19-82.jpg");
   min-height: 100vh;
 }
 
