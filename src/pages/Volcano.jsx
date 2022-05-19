@@ -3,6 +3,7 @@ import { Button } from "reactstrap";
 import { useEffect, useState } from "react";
 import MyMap from "../components/Map";
 
+/*
 const Abu = {
   name: "Abu",
   country: "Japan",
@@ -18,14 +19,19 @@ const Abu = {
   population_30km: 117805,
   population_100km: 4071152
 };
-
+*/
 export default function Volcano() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const id = searchParams.get("id");
-  //const { loading, volcano} = useVolcanoById(id);
+  //return (<p> the volcqno id is :{id}</p>)
+  const { volcano } = useVolcanoById(id);
 
-  const volcano = Abu;
+  /*if (loading) {
+    return <p>Loading...</p>;
+   }
+  //const volcano = Abu;
+  */
 
   return (
     <div className="container">
@@ -55,16 +61,14 @@ export default function Volcano() {
 }
 
 function useVolcanoById(id) {
-  const [loading, setLoading] = useState(true);
   const [volcano, setVolcano] = useState([]);
 
   useEffect(() => {
-    fetch(`http://sefdb02.qut.edu.au:3001/volcano/` + id)
+    fetch("http://sefdb02.qut.edu.au:3001/volcano/" + id)
       .then((res) => res.json())
       .then((res) => setVolcano(res))
       .then((data) =>
         data.map((volc) => ({
-          id: volc.id,
           name: volc.name,
           country: volc.country,
           region: volc.region,
@@ -82,12 +86,10 @@ function useVolcanoById(id) {
       )
       .then((volc) => {
         setVolcano(volc);
-        setLoading(false);
       });
   }, [id]);
 
   return {
-    loading,
     volcano
   };
 }
